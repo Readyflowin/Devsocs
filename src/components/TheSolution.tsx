@@ -1,123 +1,122 @@
-import React, { useState } from 'react';
-import { ChevronDown, ChevronUp, Database, Instagram, Zap, Ban } from 'lucide-react';
+import React from 'react';
+import { FileSpreadsheet, Code2, MessageSquare, CheckCircle, Gift } from 'lucide-react';
 
 const TheSolution = () => {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
-
-  const toggleAccordion = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
-  };
-
-  const features = [
-    {
-      title: "500+ Manually Verified Leads",
-      icon: Database,
-      content: (
-        <div className="space-y-3">
-          <p className="text-sm text-slate-600 leading-relaxed">
-            I didn't use a bot. I manually checked 500+ businesses to ensure they are <b>real, active, and spending money.</b> You get a clean Google Sheet with:
-          </p>
-          {/* Mini Sheet Mockup */}
-          <div className="bg-slate-50 border border-slate-200 rounded-lg p-3 text-xs overflow-hidden">
-             <div className="flex gap-4 border-b border-slate-200 pb-2 mb-2 font-bold text-slate-400 uppercase tracking-wider">
-                <span className="w-1/3">Business</span>
-                <span className="w-1/3">Status</span>
-                <span className="w-1/3">Action</span>
-             </div>
-             <div className="flex gap-4 items-center text-slate-800 font-medium">
-                <span className="w-1/3 truncate">Urban Kicks...</span>
-                <span className="w-1/3 text-red-500 bg-red-50 px-1 rounded">No Website</span>
-                <span className="w-1/3 text-blue-600 underline">IG Link</span>
-             </div>
-             <div className="mt-2 text-center text-[10px] text-slate-400 italic">
-                +499 more rows inside
-             </div>
-          </div>
-        </div>
-      )
-    },
-    {
-      title: "Direct Decision Maker Access",
-      icon: Instagram,
-      content: (
-        <p className="text-sm text-slate-600 leading-relaxed">
-          Stop searching for emails that go to spam. I provide <b>Direct Instagram Profile Links.</b> You are one click away from DMing the owner directly.
-        </p>
-      )
-    },
-    {
-      title: "The 'Ads Active' Filter",
-      icon: Zap,
-      content: (
-        <p className="text-sm text-slate-600 leading-relaxed">
-          Why pitch broke clients? Every business on this list is <b>currently running Meta Ads.</b> They have a marketing budget. They just need a developer.
-        </p>
-      )
-    },
-    {
-      title: "Zero Scraping Tools Needed",
-      icon: Ban,
-      content: (
-        <p className="text-sm text-slate-600 leading-relaxed">
-          You don't need to pay $49/month for scraping software or learn Python. I've done the hard work (100+ hours) for you. Just download and pitch.
-        </p>
-      )
-    }
-  ];
-
   return (
-    <section className="bg-white py-16 px-4">
-      <div className="max-w-md mx-auto">
+    <div className="bg-white py-16 sm:py-24">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header */}
-        <div className="text-center mb-10">
-           <span className="text-[#FF5500] font-bold tracking-widest uppercase text-xs">The Solution</span>
-           <h2 className="text-3xl font-black text-slate-900 mt-2">
-             What You Get Inside.
-           </h2>
-           <p className="text-slate-500 text-sm mt-2">
-             Everything you need to land your first client tonight.
-           </p>
+        {/* Header */}
+        <div className="text-center mb-16">
+          <span className="text-[#FF4500] font-bold tracking-wider uppercase text-sm">
+            What's Inside The Bundle?
+          </span>
+          <h2 className="mt-2 text-3xl font-bold text-slate-900 sm:text-4xl">
+            Everything You Need To Close Your First Client
+          </h2>
+          <p className="mt-4 text-slate-500 max-w-2xl mx-auto">
+            We don't just give you leads and leave you alone. We give you the <span className="text-slate-900 font-semibold">exact system</span> to close them and the tools to deliver the work.
+          </p>
         </div>
 
-        {/* Accordion Stack */}
-        <div className="space-y-4">
-          {features.map((feature, index) => {
-            const Icon = feature.icon;
-            return (
-              <div 
-                key={index} 
-                className={`border transition-all duration-200 rounded-xl overflow-hidden ${openIndex === index ? 'border-[#FF5500] shadow-md bg-orange-50/10' : 'border-slate-100 shadow-sm bg-white'}`}
-              >
-                <button 
-                  onClick={() => toggleAccordion(index)}
-                  className="w-full flex items-center justify-between p-5 text-left"
-                >
-                  <div className="flex items-center gap-4">
-                     <div className={`p-2 rounded-lg ${openIndex === index ? 'bg-[#FF5500] text-white' : 'bg-orange-100 text-[#FF5500]'}`}>
-                        <Icon size={20} />
-                     </div>
-                     <span className={`font-bold text-lg ${openIndex === index ? 'text-slate-900' : 'text-slate-700'}`}>
-                        {feature.title}
-                     </span>
-                  </div>
-                  {openIndex === index ? <ChevronUp size={20} className="text-slate-400"/> : <ChevronDown size={20} className="text-slate-400"/>}
-                </button>
-                
-                <div 
-                  className={`overflow-hidden transition-all duration-300 ease-in-out ${openIndex === index ? 'max-h-64 opacity-100' : 'max-h-0 opacity-0'}`}
-                >
-                  <div className="p-5 pt-0 pl-[4.5rem]">
-                     {feature.content}
-                  </div>
-                </div>
-              </div>
-            );
-          })}
+        {/* The 3 Cards Stack */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+          
+          {/* Card 1: The DATA (Main Product) */}
+          <div className="relative group rounded-3xl border-2 border-slate-100 bg-white p-8 shadow-sm hover:border-orange-200 hover:shadow-xl transition-all duration-300">
+            <div className="w-14 h-14 bg-green-100 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <FileSpreadsheet className="w-8 h-8 text-green-600" />
+            </div>
+            <h3 className="text-xl font-bold text-slate-900 mb-2">
+                1. The "Gold" Data
+            </h3>
+            <p className="text-slate-500 text-sm mb-6 min-h-[40px]">
+                250+ Verified Indian Businesses running ads without a website.
+            </p>
+            <ul className="space-y-3">
+                <li className="flex items-center gap-2 text-sm text-slate-700">
+                    <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" /> Direct WhatsApp Numbers
+                </li>
+                <li className="flex items-center gap-2 text-sm text-slate-700">
+                    <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" /> Ad Library Links
+                </li>
+                <li className="flex items-center gap-2 text-sm text-slate-700">
+                    <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" /> Excel/CSV Format
+                </li>
+            </ul>
+          </div>
+
+          {/* Card 2: The SCRIPT (Bonus 1) */}
+          <div className="relative group rounded-3xl border-2 border-slate-100 bg-white p-8 shadow-sm hover:border-orange-200 hover:shadow-xl transition-all duration-300">
+            {/* Bonus Badge */}
+            <div className="absolute top-4 right-4 bg-orange-100 text-[#FF4500] text-xs font-bold px-2 py-1 rounded-lg flex items-center gap-1">
+                <Gift className="w-3 h-3" /> BONUS #1
+            </div>
+
+            <div className="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <MessageSquare className="w-8 h-8 text-blue-600" />
+            </div>
+            <h3 className="text-xl font-bold text-slate-900 mb-2">
+                2. The "Anti-Spam" Script
+            </h3>
+            <p className="text-slate-500 text-sm mb-6 min-h-[40px]">
+                Don't sound like a bot. Use my "Savior" framework that gets replies.
+            </p>
+            <ul className="space-y-3">
+                <li className="flex items-center gap-2 text-sm text-slate-700">
+                    <CheckCircle className="w-4 h-4 text-blue-500 flex-shrink-0" /> Non-Salesy Approach
+                </li>
+                <li className="flex items-center gap-2 text-sm text-slate-700">
+                    <CheckCircle className="w-4 h-4 text-blue-500 flex-shrink-0" /> "Broken Link" Strategy
+                </li>
+                <li className="flex items-center gap-2 text-sm text-slate-700">
+                    <CheckCircle className="w-4 h-4 text-blue-500 flex-shrink-0" /> Copy & Paste Ready
+                </li>
+            </ul>
+          </div>
+
+          {/* Card 3: The CODE (Bonus 2) */}
+          <div className="relative group rounded-3xl border-2 border-slate-100 bg-white p-8 shadow-sm hover:border-orange-200 hover:shadow-xl transition-all duration-300">
+            {/* Bonus Badge */}
+            <div className="absolute top-4 right-4 bg-orange-100 text-[#FF4500] text-xs font-bold px-2 py-1 rounded-lg flex items-center gap-1">
+                <Gift className="w-3 h-3" /> BONUS #2
+            </div>
+
+            <div className="w-14 h-14 bg-purple-100 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <Code2 className="w-8 h-8 text-purple-600" />
+            </div>
+            <h3 className="text-xl font-bold text-slate-900 mb-2">
+                3. Liquid Code Vault
+            </h3>
+            <p className="text-slate-500 text-sm mb-6 min-h-[40px]">
+                150+ Premium Shopify Snippets to build sites in hours, not days.
+            </p>
+            <ul className="space-y-3">
+                <li className="flex items-center gap-2 text-sm text-slate-700">
+                    <CheckCircle className="w-4 h-4 text-purple-500 flex-shrink-0" /> Sticky Add-To-Cart
+                </li>
+                <li className="flex items-center gap-2 text-sm text-slate-700">
+                    <CheckCircle className="w-4 h-4 text-purple-500 flex-shrink-0" /> Announcement Bars
+                </li>
+                <li className="flex items-center gap-2 text-sm text-slate-700">
+                    <CheckCircle className="w-4 h-4 text-purple-500 flex-shrink-0" /> Worth ₹5,000+ (Free)
+                </li>
+            </ul>
+          </div>
+
+        </div>
+
+        {/* Value Summary */}
+        <div className="mt-12 text-center bg-slate-50 rounded-2xl p-6 border border-dashed border-slate-300">
+            <p className="text-slate-600 text-lg">
+                Total Value: <span className="line-through text-slate-400">₹7,500</span>
+                <span className="mx-3 text-slate-300">|</span>
+                Your Price: <span className="text-[#FF4500] font-bold text-2xl">₹499 Only</span>
+            </p>
         </div>
 
       </div>
-    </section>
+    </div>
   );
 };
 

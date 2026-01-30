@@ -1,84 +1,95 @@
 import React from 'react';
-import { Lock, Star } from 'lucide-react';
+import { ShieldCheck, Database, Smartphone, ExternalLink } from 'lucide-react';
 
 const TrustWall = () => {
-  // Random 1080x1920 placeholders for now
-  const reviews = [
-    "https://images.unsplash.com/photo-1611162616305-c69b3fae27c5?q=80&w=1000&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?q=80&w=1000&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1611162616475-46b635cb6868?q=80&w=1000&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?q=80&w=1000&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1611162616305-c69b3fae27c5?q=80&w=1000&auto=format&fit=crop",
-  ];
-
   return (
-    <section className="bg-white py-16 border-t border-slate-100 overflow-hidden">
-      <div className="max-w-md mx-auto text-center px-4 mb-8">
+    <div className="bg-slate-50 py-16 sm:py-24 border-y border-slate-200">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
-        {/* --- HEADLINE --- */}
-        <div className="flex justify-center mb-2">
-           {[1,2,3,4,5].map(i => <Star key={i} size={16} fill="#FF5500" className="text-[#FF5500]"/>)}
+        {/* Section Header */}
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center gap-2 bg-orange-100 px-3 py-1 rounded-full mb-4">
+            <ShieldCheck className="w-4 h-4 text-orange-600" />
+            <span className="text-xs font-bold text-orange-700 uppercase tracking-wide">100% Verified Data</span>
+          </div>
+          <h2 className="text-3xl font-bold text-slate-900 sm:text-4xl">
+            We Don't Guess. We Verify.
+          </h2>
+          <p className="mt-4 text-slate-500 max-w-2xl mx-auto">
+            Every lead in this sheet has passed our 3-step manual verification process. We don't sell scraped junk; we sell qualified leads.
+          </p>
         </div>
-        <h2 className="text-3xl font-black text-slate-900 mb-2 tracking-tight">
-           Wall of <span className="text-[#FF5500]">Wins.</span>
-        </h2>
-        <p className="text-slate-500 text-sm font-medium">
-           Swipe to see real conversations. 👇
-        </p>
+
+        {/* Evidence Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          
+          {/* Card 1: The Spender Proof */}
+          <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
+            <div className="aspect-[4/3] bg-slate-100 rounded-xl mb-4 overflow-hidden relative group">
+                {/* Placeholder Image - Replace with Ad Library Screenshot */}
+                <img 
+                    src="/image/data1.jpg" 
+                    alt="Active Ad Library Status" 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute top-2 right-2 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded shadow-sm">
+                    ACTIVE
+                </div>
+            </div>
+            <h3 className="text-lg font-bold text-slate-900 mb-2 flex items-center gap-2">
+                They Have Budget
+            </h3>
+            <p className="text-sm text-slate-500 leading-relaxed">
+                We manually check Meta Ad Library. If they are not running ads <i>right now</i>, they are not on the list.
+            </p>
+          </div>
+
+          {/* Card 2: The Opportunity Proof */}
+          <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
+            <div className="aspect-[4/3] bg-slate-100 rounded-xl mb-4 overflow-hidden relative group">
+                {/* Placeholder Image - Replace with Instagram Bio/Linktree Screenshot */}
+                <img 
+                    src="/image/data2.jpg" 
+                    alt="Instagram Bio with Linktree" 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute bottom-2 left-2 bg-red-100 text-red-600 text-xs font-bold px-2 py-1 rounded border border-red-200">
+                    NO WEBSITE
+                </div>
+            </div>
+            <h3 className="text-lg font-bold text-slate-900 mb-2 flex items-center gap-2">
+                They Need You
+            </h3>
+            <p className="text-sm text-slate-500 leading-relaxed">
+                They are sending paid traffic to WhatsApp or Linktree. They are literally burning money. You are the savior.
+            </p>
+          </div>
+
+          {/* Card 3: The Asset Proof */}
+          <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
+            <div className="aspect-[4/3] bg-slate-100 rounded-xl mb-4 overflow-hidden relative group">
+                {/* Placeholder Image - Replace with Excel Sheet Screenshot */}
+                <img 
+                    src="/image/data3.jpg" 
+                    alt="Excel Sheet Database" 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-lg shadow-lg">
+                    <Database className="w-6 h-6 text-orange-600 mx-auto" />
+                </div>
+            </div>
+            <h3 className="text-lg font-bold text-slate-900 mb-2 flex items-center gap-2">
+                Direct Access
+            </h3>
+            <p className="text-sm text-slate-500 leading-relaxed">
+                No "info@" emails. You get direct Instagram Id's. Copy, paste, and close.
+            </p>
+          </div>
+
+        </div>
+
       </div>
-
-      {/* --- HORIZONTAL SCROLL SLIDESHOW --- */}
-      {/* 'no-scrollbar' class hide karne ke liye custom CSS chahiye hoti hai, 
-          hum inline style use karenge taaki scrollbar na dikhe par swipe kaam kare */}
-      <div 
-        className="flex overflow-x-auto gap-4 px-6 pb-8 snap-x snap-mandatory"
-        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }} 
-      >
-         {reviews.map((img, index) => (
-           <div key={index} className="min-w-[280px] snap-center relative group first:pl-2">
-              {/* Phone Frame */}
-              <div className="bg-slate-900 p-2 rounded-[2rem] border-4 border-slate-100 shadow-xl transform transition-transform duration-300 group-hover:scale-[1.02]">
-                 <div className="relative overflow-hidden rounded-[1.5rem] aspect-[9/16] bg-slate-800">
-                    
-                    {/* Header Strip for Realism */}
-                    <div className="absolute top-0 left-0 w-full h-12 bg-gradient-to-b from-black/50 to-transparent z-10 flex items-center px-4 gap-2">
-                       <div className="w-6 h-6 rounded-full bg-slate-200/20"></div>
-                       <div className="h-2 w-20 bg-slate-200/20 rounded"></div>
-                    </div>
-
-                    {/* IMAGE */}
-                    <img 
-                      src={img} 
-                      alt={`Proof ${index+1}`} 
-                      className="w-full h-full object-cover opacity-90"
-                    />
-
-                    {/* Placeholder Text */}
-                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                       <span className="bg-black/60 text-white text-[10px] font-bold px-3 py-1 rounded-full backdrop-blur-sm border border-white/20">
-                          Review Screenshot {index + 1}
-                       </span>
-                    </div>
-                 </div>
-              </div>
-           </div>
-         ))}
-         
-         {/* End Padding to show last item fully */}
-         <div className="min-w-[20px]"></div>
-      </div>
-
-      {/* --- BOTTOM CTA --- */}
-      <div className="px-4 text-center mt-4">
-         <button className="bg-[#FF5500] hover:bg-[#e04b00] text-white text-lg font-bold py-4 w-full rounded-xl shadow-xl shadow-orange-500/20 active:scale-95 transition-transform">
-            Get These Results - ₹499
-         </button>
-         <p className="text-[10px] text-slate-400 mt-3 flex items-center justify-center gap-1">
-            <Lock size={10}/> 100% Money Back Guarantee if data is fake.
-         </p>
-      </div>
-
-    </section>
+    </div>
   );
 };
 
