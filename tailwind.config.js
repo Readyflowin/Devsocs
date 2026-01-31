@@ -21,7 +21,6 @@ export default {
         'glow': '0 0 20px rgba(100, 255, 218, 0.3)', 
         'card': '0 10px 30px -10px rgba(2, 12, 27, 0.7)',
       },
-      // --- NEW ANIMATIONS ADDED BELOW ---
       keyframes: {
         shimmer: {
           '100%': { transform: 'translateX(100%)' },
@@ -34,8 +33,9 @@ export default {
       animation: {
         'bounce-slow': 'bounce 3s infinite',
         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-        'shimmer': 'shimmer 1.5s infinite',        // For Button Shine
-        'marquee': 'marquee 30s linear infinite',   // For Auto-Scrolling Images
+        'shimmer': 'shimmer 1.5s infinite',
+        // UPDATED SPEED 👇 (30s -> 80s)
+        'marquee': 'marquee 80s linear infinite', 
       }
     },
   },
