@@ -18,9 +18,9 @@ const LandingPage = () => {
     <div className="relative">
       <Header />
       <HeroSection />
+      <EarningsSection />
       <PainProblem />
       <TrustWall />
-      <EarningsSection />
       <BonusSection />
       <Reviews />
       <Footer />
