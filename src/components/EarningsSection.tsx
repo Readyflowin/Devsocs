@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { TrendingUp } from 'lucide-react';
 
-// === FIXED IMPORTS ===
+// === IMPORTS ===
 import proof1 from '../assets/images/proof1.png';
 import proof2 from '../assets/images/proof2.png';
 import proof3 from '../assets/images/proof3.png';
@@ -11,12 +11,40 @@ import proof6 from '../assets/images/proof6.png';
 import proof7 from '../assets/images/proof7.jpeg';
 
 const EarningsSection = () => {
-  // Original proofs array
-  const proofs = [proof1, proof2, proof3, proof4, proof5, proof6, proof7];
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [isPaused, setIsPaused] = useState(false);
+
+  // Images ko 3 baar repeat kiya taaki "Infinite" feel aaye
+  const originalProofs = [proof1, proof2, proof3, proof4, proof5, proof6, proof7];
+  const proofs = [...originalProofs, ...originalProofs, ...originalProofs];
+
+  useEffect(() => {
+    const scrollContainer = scrollRef.current;
+    if (!scrollContainer) return;
+
+    let animationFrameId: number;
+
+    const scroll = () => {
+      if (!isPaused && scrollContainer) {
+        // Speed: 1px add kar rahe hain har frame mein (Slow & Smooth)
+        if (scrollContainer.scrollLeft >= (scrollContainer.scrollWidth / 3) * 2) {
+          // Agar end ke paas pohanch gaye, toh wapas start (seamless loop) pe jump karo
+          scrollContainer.scrollLeft = scrollContainer.scrollWidth / 3;
+        } else {
+          scrollContainer.scrollLeft += 1; 
+        }
+      }
+      animationFrameId = requestAnimationFrame(scroll);
+    };
+
+    animationFrameId = requestAnimationFrame(scroll);
+
+    return () => cancelAnimationFrame(animationFrameId);
+  }, [isPaused]);
 
   return (
-    <div className="bg-slate-50 py-16 sm:py-24 border-b border-slate-200 overflow-hidden">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-12">
+    <div className="bg-slate-50 py-16 sm:py-24 border-b border-slate-200">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-10">
         
         {/* Header Section */}
         <div className="text-center">
@@ -28,7 +56,6 @@ const EarningsSection = () => {
              <p className="text-slate-600 font-medium">Results from last month</p>
           </div>
           
-          {/* THE BIG NUMBER */}
           <div className="inline-block relative">
             <span className="text-5xl sm:text-7xl font-black text-[#FF4500] tracking-tight">
               ₹74,300
@@ -43,73 +70,52 @@ const EarningsSection = () => {
         </div>
       </div>
 
-      {/* === INFINITE MARQUEE SLIDER === */}
-      <div className="relative w-full overflow-hidden">
-          {/* Gradients to hide edges for smooth fade effect */}
-          <div className="absolute top-0 bottom-0 left-0 w-20 bg-gradient-to-r from-slate-50 to-transparent z-10"></div>
-          <div className="absolute top-0 bottom-0 right-0 w-20 bg-gradient-to-l from-slate-50 to-transparent z-10"></div>
+      {/* === AUTO + MANUAL SCROLL CONTAINER === */}
+      <div className="relative w-full">
+          
+          {/* Gradients to fade edges */}
+          <div className="absolute top-0 bottom-0 left-0 w-12 md:w-24 bg-gradient-to-r from-slate-50 to-transparent z-10 pointer-events-none"></div>
+          <div className="absolute top-0 bottom-0 right-0 w-12 md:w-24 bg-gradient-to-l from-slate-50 to-transparent z-10 pointer-events-none"></div>
 
-          {/* The Sliding Track */}
-          {/* group-hover:paused -> Mouse upar layenge to ruk jayega */}
-          <div className="flex w-max gap-8 animate-marquee group hover:[animation-play-state:paused]">
-            
-            {/* Set 1: Original Images */}
+          {/* SCROLLABLE AREA */}
+          <div 
+            ref={scrollRef}
+            // Logic: Mouse enter/Touch start par pause karo taaki user scroll kar sake
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+            onTouchStart={() => setIsPaused(true)}
+            onTouchEnd={() => {
+                // Thoda delay taaki user swipe karke hath hataye toh turant na bhage
+                setTimeout(() => setIsPaused(false), 2000);
+            }}
+            className="flex overflow-x-auto gap-6 py-8 px-4 scrollbar-hide select-none cursor-grab active:cursor-grabbing"
+            style={{ 
+                scrollbarWidth: 'none', // Firefox hide
+                msOverflowStyle: 'none', // IE hide
+            }}
+          >
             {proofs.map((src, index) => (
               <div 
-                key={`original-${index}`} 
-                className="relative flex-shrink-0 transition-transform duration-300 hover:scale-[1.02]"
+                key={index} 
+                className="flex-shrink-0 transition-transform duration-300 hover:scale-[1.02]"
               >
                  <div className="h-[400px] aspect-[2/3] rounded-2xl bg-white shadow-xl border border-slate-100 p-2 overflow-hidden">
                     <img 
                         src={src} 
-                        alt={`Proof ${index + 1}`} 
-                        className="h-full w-full object-cover rounded-xl select-none pointer-events-none"
+                        alt={`Proof ${index}`} 
+                        className="h-full w-full object-cover rounded-xl pointer-events-none" 
+                        // pointer-events-none isliye taaki drag karne mein image select na ho
                         loading="lazy"
                     />
                 </div>
               </div>
             ))}
-
-            {/* Set 2: Duplicate Images (For Seamless Loop) */}
-            {proofs.map((src, index) => (
-              <div 
-                key={`duplicate-${index}`} 
-                className="relative flex-shrink-0 transition-transform duration-300 hover:scale-[1.02]"
-              >
-                 <div className="h-[400px] aspect-[2/3] rounded-2xl bg-white shadow-xl border border-slate-100 p-2 overflow-hidden">
-                    <img 
-                        src={src} 
-                        alt={`Proof Duplicate ${index + 1}`} 
-                        className="h-full w-full object-cover rounded-xl select-none pointer-events-none"
-                        loading="lazy"
-                    />
-                </div>
-              </div>
-            ))}
-            
-            {/* Set 3: Extra Buffer (Just in case screen is very wide) */}
-            {proofs.map((src, index) => (
-              <div 
-                key={`buffer-${index}`} 
-                className="relative flex-shrink-0 transition-transform duration-300 hover:scale-[1.02]"
-              >
-                 <div className="h-[400px] aspect-[2/3] rounded-2xl bg-white shadow-xl border border-slate-100 p-2 overflow-hidden">
-                    <img 
-                        src={src} 
-                        alt={`Proof Buffer ${index + 1}`} 
-                        className="h-full w-full object-cover rounded-xl select-none pointer-events-none"
-                        loading="lazy"
-                    />
-                </div>
-              </div>
-            ))}
-
           </div>
 
           {/* Mobile Hint */}
-          <div className="flex justify-center mt-6 md:hidden">
+          <div className="flex justify-center mt-2 md:hidden">
             <span className="text-xs font-medium text-slate-400 uppercase tracking-widest animate-pulse">
-              Scrolls Automatically • Tap to Pause
+              {isPaused ? "Swipe to scroll" : "Tap to pause & scroll"}
             </span>
           </div>
       </div>

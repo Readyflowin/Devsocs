@@ -29,13 +29,18 @@ export default {
           '0%': { transform: 'translateX(0%)' },
           '100%': { transform: 'translateX(-100%)' },
         },
+        // NEW WOBBLE ANIMATION 👇
+        wobble: {
+          '0%, 100%': { transform: 'rotate(-3deg)' },
+          '50%': { transform: 'rotate(3deg)' },
+        }
       },
       animation: {
         'bounce-slow': 'bounce 3s infinite',
         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
         'shimmer': 'shimmer 1.5s infinite',
-        // UPDATED SPEED 👇 (30s -> 80s)
         'marquee': 'marquee 80s linear infinite', 
+        'wobble': 'wobble 1s ease-in-out infinite', // Button ke liye
       }
     },
   },
