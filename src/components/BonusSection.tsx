@@ -2,7 +2,7 @@ import React from 'react';
 import { AlertTriangle, ArrowRight, Lock, Shield } from 'lucide-react';
 
 // === IMPORT YOUR 3D BONUS IMAGES ===
-// Make sure these exist in src/assets/images/
+// Ensure these match your actual file names (png or jpg)
 import bonus1 from '../assets/images/bonus1.png'; // Excel/Database
 import bonus2 from '../assets/images/bonus2.png'; // Playbook
 import bonus3 from '../assets/images/bonus3.png'; // Code/Tech
@@ -110,11 +110,17 @@ const BonusSection = () => {
             <span>75 Total Spots</span>
           </div>
 
-          {/* FINAL CTA BUTTON */}
-          <button className="w-full sm:w-auto inline-flex items-center justify-center rounded-xl bg-[#FF4500] px-8 py-4 text-lg font-bold text-white shadow-xl transition-all hover:bg-orange-600 hover:scale-105 hover:shadow-orange-500/30">
+          {/* FINAL CTA BUTTON - UPDATED TO LINK */}
+          <a 
+            href="https://rzp.io/rzp/devsocs" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="w-full sm:w-auto inline-flex items-center justify-center rounded-xl bg-[#FF4500] px-8 py-4 text-lg font-bold text-white shadow-xl transition-all hover:bg-orange-600 hover:scale-105 hover:shadow-orange-500/30"
+          >
             Get Instant Access - ₹499
             <ArrowRight className="ml-2 h-5 w-5" />
-          </button>
+          </a>
+          
           <p className="mt-4 text-xs text-slate-400 font-medium">
             <Lock className="w-3 h-3 inline mr-1" />
             One-time payment. Instant download via Email.

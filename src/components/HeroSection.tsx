@@ -58,13 +58,20 @@ const HeroSection = () => {
 
         {/* CTA Button Area */}
         <div className="flex flex-col items-center justify-center gap-4 sm:flex-row mb-12">
-          <button className="group relative inline-flex items-center justify-center rounded-xl bg-[#FF4500] px-8 py-4 text-lg font-bold text-white shadow-xl transition-all hover:bg-orange-600 hover:scale-105 hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-offset-2">
+          
+          {/* UPDATED: Payment Link Added */}
+          <a 
+            href="https://rzp.io/rzp/devsocs" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="group relative inline-flex items-center justify-center rounded-xl bg-[#FF4500] px-8 py-4 text-lg font-bold text-white shadow-xl transition-all hover:bg-orange-600 hover:scale-105 hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-offset-2"
+          >
             Download the Bundle - ₹499
             <ArrowDown className="ml-2 h-5 w-5 animate-bounce" />
             
             {/* Shiny effect on button */}
             <div className="absolute inset-0 rounded-xl ring-2 ring-white/20 group-hover:ring-white/40"></div>
-          </button>
+          </a>
           
           <p className="text-sm text-slate-500 flex items-center gap-1">
             <Lock className="w-3 h-3" /> Secure Payment via UPI
