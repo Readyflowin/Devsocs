@@ -1,24 +1,24 @@
 import React, { useRef } from 'react';
 import { ChevronLeft, ChevronRight, TrendingUp } from 'lucide-react';
 
+// === FIXED IMPORTS (Extensions Match Your Files) ===
+import proof1 from '../assets/images/proof1.png';  // .png
+import proof2 from '../assets/images/proof2.png';  // .png
+import proof3 from '../assets/images/proof3.png';  // .png
+import proof4 from '../assets/images/proof4.png';  // .png
+import proof5 from '../assets/images/proof5.png';  // .png
+import proof6 from '../assets/images/proof6.png';  // .png
+import proof7 from '../assets/images/proof7.jpeg'; // .jpeg
+
 const EarningsSection = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  // Proof Images Array (Path: /image/proofX.jpg or .png)
-  // Make sure extensions match your actual files in public/image/ folder
-  const proofs = [
-    '/image/proof1.jpg',
-    '/image/proof2.jpg',
-    '/image/proof3.jpg',
-    '/image/proof4.jpg',
-    '/image/proof5.jpg',
-    '/image/proof6.jpg',
-  ];
+  const proofs = [proof1, proof2, proof3, proof4, proof5, proof6, proof7];
 
   const scroll = (direction: 'left' | 'right') => {
     if (scrollRef.current) {
       const { current } = scrollRef;
-      const scrollAmount = direction === 'left' ? -350 : 350;
+      const scrollAmount = direction === 'left' ? -300 : 300;
       current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
     }
   };
@@ -42,7 +42,6 @@ const EarningsSection = () => {
             <span className="text-5xl sm:text-7xl font-black text-[#FF4500] tracking-tight">
               ₹74,300
             </span>
-            {/* Verified Badge */}
             <span className="absolute -top-3 -right-6 bg-green-100 text-green-700 text-xs font-bold px-2 py-1 rounded-full border border-green-200 transform rotate-12 shadow-sm">
               VERIFIED
             </span>
@@ -55,7 +54,7 @@ const EarningsSection = () => {
         {/* GALLERY CONTAINER */}
         <div className="relative group">
           
-          {/* Left Button (Visible on Desktop hover) */}
+          {/* Left Button */}
           <button 
             onClick={() => scroll('left')}
             className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 z-10 -ml-4 h-12 w-12 items-center justify-center rounded-full bg-white shadow-xl border border-slate-200 text-slate-700 hover:text-orange-600 hover:scale-110 transition-all opacity-0 group-hover:opacity-100"
@@ -75,22 +74,22 @@ const EarningsSection = () => {
           <div 
             ref={scrollRef}
             className="flex overflow-x-auto gap-6 py-8 px-4 snap-x snap-mandatory scrollbar-hide -mx-4 sm:mx-0"
-            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }} // Hides scrollbar
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }} 
           >
             {proofs.map((src, index) => (
               <div 
                 key={index} 
                 className="flex-shrink-0 snap-center relative transition-transform hover:scale-[1.02] duration-300"
               >
-                {/* IMPORTANT: h-[400px] sets fixed height. 
-                  w-auto lets the image define width (Flexible Ratio).
-                  object-contain ensures full image is visible.
+                {/* Image Container - Enforcing 2:3 Ratio 
+                   aspect-[2/3] ensures it stays in ratio.
+                   h-[400px] keeps height fixed so scroll looks good.
                 */}
-                <div className="h-[400px] sm:h-[500px] w-auto rounded-2xl bg-white shadow-lg border border-slate-100 p-2 overflow-hidden">
+                <div className="h-[400px] aspect-[2/3] rounded-2xl bg-white shadow-lg border border-slate-100 p-2 overflow-hidden">
                     <img 
                         src={src} 
                         alt={`Proof of earnings ${index + 1}`} 
-                        className="h-full w-auto object-contain rounded-xl mx-auto"
+                        className="h-full w-full object-cover rounded-xl"
                         loading="lazy"
                     />
                 </div>

@@ -1,15 +1,93 @@
 import React from 'react';
-import { HelpCircle, AlertTriangle, ArrowRight, Lock, Shield } from 'lucide-react';
+import { AlertTriangle, ArrowRight, Lock, Shield } from 'lucide-react';
+
+// === IMPORT YOUR 3D BONUS IMAGES ===
+// Make sure these exist in src/assets/images/
+import bonus1 from '../assets/images/bonus1.png'; // Excel/Database
+import bonus2 from '../assets/images/bonus2.png'; // Playbook
+import bonus3 from '../assets/images/bonus3.png'; // Code/Tech
 
 const BonusSection = () => {
   return (
     <div className="bg-white py-16 sm:py-24 border-t border-slate-200 relative overflow-hidden">
       
-      <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        {/* ================= NEW SECTION: WHAT'S INSIDE (3D BONUSES) ================= */}
+        <div className="text-center mb-20">
+            <span className="text-[#FF4500] font-bold tracking-wider uppercase text-sm">Total Value: ₹15,000+</span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-2 mb-12">
+               What's Inside The Bundle?
+            </h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+                
+                {/* Bonus 1: The Database */}
+                <div className="group relative bg-slate-50 hover:bg-white p-8 rounded-3xl border border-slate-100 hover:border-orange-100/50 shadow-sm hover:shadow-2xl hover:shadow-orange-100/30 transition-all duration-500">
+                    {/* Floating Image Container */}
+                    <div className="relative h-56 mb-6 flex items-center justify-center">
+                        {/* Glow Effect */}
+                        <div className="absolute inset-0 bg-orange-500/10 blur-[40px] rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+                        
+                        {/* 3D Image */}
+                        <img 
+                            src={bonus1} 
+                            alt="Verified Lead Database" 
+                            className="relative h-full w-auto object-contain drop-shadow-xl transform transition-transform duration-500 ease-in-out group-hover:-translate-y-3 group-hover:scale-105"
+                        />
+                    </div>
+                    <h3 className="text-xl font-bold text-slate-900 mb-3">1. The Verified Lead Database</h3>
+                    <p className="text-slate-600 text-sm leading-relaxed">
+                        Excel sheet with 250+ active businesses burning money on ads but no website. Includes direct Instagram IDs.
+                        <span className="block mt-2 font-bold text-orange-600">Value: ₹10,000</span>
+                    </p>
+                </div>
+
+                {/* Bonus 2: The Playbook */}
+                <div className="group relative bg-slate-50 hover:bg-white p-8 rounded-3xl border border-slate-100 hover:border-orange-100/50 shadow-sm hover:shadow-2xl hover:shadow-orange-100/30 transition-all duration-500">
+                    <div className="relative h-56 mb-6 flex items-center justify-center">
+                        <div className="absolute inset-0 bg-blue-500/10 blur-[40px] rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+                        
+                        {/* 3D Image */}
+                        <img 
+                            src={bonus2} 
+                            alt="Cold DM Playbook" 
+                            className="relative h-full w-auto object-contain drop-shadow-xl transform transition-transform duration-500 ease-in-out group-hover:-translate-y-3 group-hover:scale-105"
+                        />
+                    </div>
+                    <h3 className="text-xl font-bold text-slate-900 mb-3">2. "Copy-Paste" DM Scripts</h3>
+                    <p className="text-slate-600 text-sm leading-relaxed">
+                        Exact outreach scripts tested to get replies. Stop overthinking what to say. Just copy, send, close.
+                        <span className="block mt-2 font-bold text-orange-600">Value: ₹2,500</span>
+                    </p>
+                </div>
+
+                {/* Bonus 3: Tech Stack */}
+                <div className="group relative bg-slate-50 hover:bg-white p-8 rounded-3xl border border-slate-100 hover:border-orange-100/50 shadow-sm hover:shadow-2xl hover:shadow-orange-100/30 transition-all duration-500">
+                    <div className="relative h-56 mb-6 flex items-center justify-center">
+                        <div className="absolute inset-0 bg-green-500/10 blur-[40px] rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+                        
+                        {/* 3D Image */}
+                        <img 
+                            src={bonus3} 
+                            alt="Liquid Code Vault" 
+                            className="relative h-full w-auto object-contain drop-shadow-xl transform transition-transform duration-500 ease-in-out group-hover:-translate-y-3 group-hover:scale-105"
+                        />
+                    </div>
+                    <h3 className="text-xl font-bold text-slate-900 mb-3">3. Bonus Code Snippets</h3>
+                    <p className="text-slate-600 text-sm leading-relaxed">
+                        Ready-to-use Liquid code for Shopify sections to speed up your delivery time.
+                        <span className="block mt-2 font-bold text-orange-600">Value: ₹2,500</span>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+        {/* ================= END NEW SECTION ================= */}
+
         
         {/* Urgency Box - Clean White Look with Orange Highlight */}
-        {/* ADDED: id="pricing-card" for Header navigation */}
-        <div id="pricing-card" className="bg-white border-2 border-orange-100 rounded-3xl p-8 text-center mb-16 shadow-2xl shadow-orange-100/50 scroll-mt-32">
+        <div id="pricing-card" className="bg-white border-2 border-orange-100 rounded-3xl p-8 text-center mb-16 shadow-2xl shadow-orange-100/50 scroll-mt-32 max-w-3xl mx-auto">
           <div className="inline-flex items-center gap-2 bg-orange-50 text-orange-600 font-bold uppercase tracking-widest text-sm px-3 py-1 rounded-full mb-4">
             <AlertTriangle className="w-4 h-4" /> Batch #1 Closing Soon
           </div>
@@ -44,7 +122,7 @@ const BonusSection = () => {
         </div>
 
         {/* FAQ Section */}
-        <div className="mb-20">
+        <div className="mb-20 max-w-3xl mx-auto">
             <h3 className="text-2xl font-bold text-center text-slate-900 mb-8">Frequently Asked Questions</h3>
             <div className="space-y-4">
                 

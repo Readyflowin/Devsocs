@@ -1,6 +1,12 @@
 import React from 'react';
 import { ShieldCheck, Database, Smartphone, ExternalLink } from 'lucide-react';
 
+// === IMPORT IMAGES FROM ASSETS ===
+// Ensure these files exist in src/assets/images/
+import data1 from '../assets/images/data1.png'; 
+import data2 from '../assets/images/data2.png';
+import data3 from '../assets/images/data3.png';
+
 const TrustWall = () => {
   return (
     <div className="bg-slate-50 py-16 sm:py-24 border-y border-slate-200">
@@ -26,9 +32,9 @@ const TrustWall = () => {
           {/* Card 1: The Spender Proof */}
           <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
             <div className="aspect-[4/3] bg-slate-100 rounded-xl mb-4 overflow-hidden relative group">
-                {/* Placeholder Image - Replace with Ad Library Screenshot */}
+                {/* Replace with Ad Library Screenshot */}
                 <img 
-                    src="/image/data1.jpg" 
+                    src={data1} 
                     alt="Active Ad Library Status" 
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
@@ -40,16 +46,16 @@ const TrustWall = () => {
                 They Have Budget
             </h3>
             <p className="text-sm text-slate-500 leading-relaxed">
-                We manually check Meta Ad Library. If they are not running ads <i>right now</i>, they are not on the list.
+                We manually check Meta Ad Library. If they are not running ads right now, they are not on the list.
             </p>
           </div>
 
           {/* Card 2: The Opportunity Proof */}
           <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
             <div className="aspect-[4/3] bg-slate-100 rounded-xl mb-4 overflow-hidden relative group">
-                {/* Placeholder Image - Replace with Instagram Bio/Linktree Screenshot */}
+                {/* Replace with Instagram Bio/Linktree Screenshot */}
                 <img 
-                    src="/image/data2.jpg" 
+                    src={data2} 
                     alt="Instagram Bio with Linktree" 
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
@@ -68,9 +74,9 @@ const TrustWall = () => {
           {/* Card 3: The Asset Proof */}
           <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
             <div className="aspect-[4/3] bg-slate-100 rounded-xl mb-4 overflow-hidden relative group">
-                {/* Placeholder Image - Replace with Excel Sheet Screenshot */}
+                {/* Replace with Excel Sheet Screenshot */}
                 <img 
-                    src="/image/data3.jpg" 
+                    src={data3} 
                     alt="Excel Sheet Database" 
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />

@@ -18,9 +18,9 @@ function App() {
       <EarningsSection />
       <PainProblem />
       <TrustWall />
-      <TheSolution />
-      <Reviews />
       <BonusSection />
+      <Reviews />
+      
     </div>
   );
 }
