@@ -1,8 +1,9 @@
 import React from 'react';
 import { AlertTriangle, ArrowRight, Lock, Shield } from 'lucide-react';
+// IMPORT TRACKING EVENT
+import { trackInitiateCheckout } from '../pixelEvents'; // <--- IMPORT ADDED
 
 // === IMPORT YOUR 3D BONUS IMAGES ===
-// Ensure these match your actual file names (png or jpg)
 import bonus1 from '../assets/images/bonus1.png'; // Excel/Database
 import bonus2 from '../assets/images/bonus2.png'; // Playbook
 import bonus3 from '../assets/images/bonus3.png'; // Code/Tech
@@ -24,12 +25,8 @@ const BonusSection = () => {
                 
                 {/* Bonus 1: The Database */}
                 <div className="group relative bg-slate-50 hover:bg-white p-8 rounded-3xl border border-slate-100 hover:border-orange-100/50 shadow-sm hover:shadow-2xl hover:shadow-orange-100/30 transition-all duration-500">
-                    {/* Floating Image Container */}
                     <div className="relative h-56 mb-6 flex items-center justify-center">
-                        {/* Glow Effect */}
                         <div className="absolute inset-0 bg-orange-500/10 blur-[40px] rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
-                        
-                        {/* 3D Image */}
                         <img 
                             src={bonus1} 
                             alt="Verified Lead Database" 
@@ -47,8 +44,6 @@ const BonusSection = () => {
                 <div className="group relative bg-slate-50 hover:bg-white p-8 rounded-3xl border border-slate-100 hover:border-orange-100/50 shadow-sm hover:shadow-2xl hover:shadow-orange-100/30 transition-all duration-500">
                     <div className="relative h-56 mb-6 flex items-center justify-center">
                         <div className="absolute inset-0 bg-blue-500/10 blur-[40px] rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
-                        
-                        {/* 3D Image */}
                         <img 
                             src={bonus2} 
                             alt="Cold DM Playbook" 
@@ -66,8 +61,6 @@ const BonusSection = () => {
                 <div className="group relative bg-slate-50 hover:bg-white p-8 rounded-3xl border border-slate-100 hover:border-orange-100/50 shadow-sm hover:shadow-2xl hover:shadow-orange-100/30 transition-all duration-500">
                     <div className="relative h-56 mb-6 flex items-center justify-center">
                         <div className="absolute inset-0 bg-green-500/10 blur-[40px] rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
-                        
-                        {/* 3D Image */}
                         <img 
                             src={bonus3} 
                             alt="Liquid Code Vault" 
@@ -83,10 +76,8 @@ const BonusSection = () => {
 
             </div>
         </div>
-        {/* ================= END NEW SECTION ================= */}
-
         
-        {/* Urgency Box - Clean White Look with Orange Highlight */}
+        {/* Urgency Box */}
         <div id="pricing-card" className="bg-white border-2 border-orange-100 rounded-3xl p-8 text-center mb-16 shadow-2xl shadow-orange-100/50 scroll-mt-32 max-w-3xl mx-auto">
           <div className="inline-flex items-center gap-2 bg-orange-50 text-orange-600 font-bold uppercase tracking-widest text-sm px-3 py-1 rounded-full mb-4">
             <AlertTriangle className="w-4 h-4" /> Batch #1 Closing Soon
@@ -101,7 +92,6 @@ const BonusSection = () => {
           {/* Progress Bar */}
           <div className="w-full bg-slate-100 rounded-full h-4 mb-2 overflow-hidden border border-slate-200">
             <div className="bg-[#FF4500] h-full rounded-full w-[35%] animate-pulse relative overflow-hidden">
-                {/* Stripe effect on progress bar */}
                 <div className="absolute inset-0 bg-white/20" style={{backgroundImage: 'linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent)', backgroundSize: '1rem 1rem'}}></div>
             </div>
           </div>
@@ -110,11 +100,12 @@ const BonusSection = () => {
             <span>75 Total Spots</span>
           </div>
 
-          {/* FINAL CTA BUTTON - UPDATED TO LINK */}
+          {/* FINAL CTA BUTTON - UPDATED WITH TRACKING */}
           <a 
             href="https://rzp.io/rzp/devsocs" 
             target="_blank" 
             rel="noopener noreferrer"
+            onClick={trackInitiateCheckout} // <--- TRACKING ADDED HERE
             className="w-full sm:w-auto inline-flex items-center justify-center rounded-xl bg-[#FF4500] px-8 py-4 text-lg font-bold text-white shadow-xl transition-all hover:bg-orange-600 hover:scale-105 hover:shadow-orange-500/30"
           >
             Get Instant Access - ₹499
@@ -131,40 +122,28 @@ const BonusSection = () => {
         <div className="mb-20 max-w-3xl mx-auto">
             <h3 className="text-2xl font-bold text-center text-slate-900 mb-8">Frequently Asked Questions</h3>
             <div className="space-y-4">
-                
-                {/* Q1 */}
                 <details className="group bg-slate-50 rounded-xl p-5 border border-slate-200 cursor-pointer open:bg-white open:shadow-md transition-all duration-300">
                     <summary className="flex items-center justify-between font-bold text-slate-800 list-none">
                         Is this data legal to use?
-                        <span className="transition-transform duration-300 group-open:rotate-180">
-                            <ArrowRight className="w-4 h-4 rotate-90 text-slate-400" />
-                        </span>
+                        <span className="transition-transform duration-300 group-open:rotate-180"><ArrowRight className="w-4 h-4 rotate-90 text-slate-400" /></span>
                     </summary>
                     <p className="text-slate-600 mt-3 text-sm leading-relaxed">
                         Yes. This is 100% Public Business Information aggregated from the Meta Ad Library and public Instagram business profiles. We do not sell private personal data. You are contacting businesses via their public contact numbers.
                     </p>
                 </details>
-
-                {/* Q2 */}
                 <details className="group bg-slate-50 rounded-xl p-5 border border-slate-200 cursor-pointer open:bg-white open:shadow-md transition-all duration-300">
                     <summary className="flex items-center justify-between font-bold text-slate-800 list-none">
                         I use WordPress/Framer, is this for me?
-                        <span className="transition-transform duration-300 group-open:rotate-180">
-                            <ArrowRight className="w-4 h-4 rotate-90 text-slate-400" />
-                        </span>
+                        <span className="transition-transform duration-300 group-open:rotate-180"><ArrowRight className="w-4 h-4 rotate-90 text-slate-400" /></span>
                     </summary>
                     <p className="text-slate-600 mt-3 text-sm leading-relaxed">
                         Absolutely. The leads are businesses that need a website. They don't care if you build it in WordPress, Shopify, or React. They just want results. The bonus Liquid codes are for Shopify, but the leads are universal.
                     </p>
                 </details>
-
-                {/* Q3 */}
                 <details className="group bg-slate-50 rounded-xl p-5 border border-slate-200 cursor-pointer open:bg-white open:shadow-md transition-all duration-300">
                     <summary className="flex items-center justify-between font-bold text-slate-800 list-none">
                         How do I get the files?
-                        <span className="transition-transform duration-300 group-open:rotate-180">
-                            <ArrowRight className="w-4 h-4 rotate-90 text-slate-400" />
-                        </span>
+                        <span className="transition-transform duration-300 group-open:rotate-180"><ArrowRight className="w-4 h-4 rotate-90 text-slate-400" /></span>
                     </summary>
                     <p className="text-slate-600 mt-3 text-sm leading-relaxed">
                         Immediately after payment, you will receive an email with the download link for the Excel Sheet, the Script PDF, and the Code Library.
@@ -178,23 +157,14 @@ const BonusSection = () => {
             <div className="flex flex-col sm:flex-row justify-between items-start gap-8">
                 <div>
                     <h4 className="font-bold text-xl mb-2 text-slate-900">DevSocs</h4>
-                    <p className="text-slate-500 text-sm max-w-xs">
-                        Helping developers and freelancers find high-ticket clients without the grind.
-                    </p>
+                    <p className="text-slate-500 text-sm max-w-xs">Helping developers and freelancers find high-ticket clients without the grind.</p>
                 </div>
-                
-                {/* Legal Text */}
                 <div className="text-xs text-slate-400 max-w-lg text-justify leading-relaxed">
-                    <p className="font-bold text-slate-600 mb-1 flex items-center gap-1">
-                        <Shield className="w-3 h-3" /> Data Policy & Disclaimer:
-                    </p>
+                    <p className="font-bold text-slate-600 mb-1 flex items-center gap-1"><Shield className="w-3 h-3" /> Data Policy & Disclaimer:</p>
                     All information contained in this database is Public Business Information collected manually from the Meta Ad Library and public business profiles where entities were actively advertising. This is a B2B Research Database. It does NOT contain private personal information, home addresses, or sensitive financial data. We aggregate publicly available business contact details to help developers connect with businesses requiring technical services.
                 </div>
             </div>
-            
-            <div className="mt-12 text-center text-slate-400 text-xs">
-                © 2026 DevSocs. All rights reserved.
-            </div>
+            <div className="mt-12 text-center text-slate-400 text-xs">© 2026 DevSocs. All rights reserved.</div>
         </div>
 
       </div>

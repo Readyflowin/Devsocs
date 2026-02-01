@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowDown, CheckCircle, Lock } from 'lucide-react';
+import { trackInitiateCheckout, trackVideoClick } from '../pixelEvents'; // <--- IMPORTS ADDED
 
 const HeroSection = () => {
   return (
@@ -38,7 +39,10 @@ const HeroSection = () => {
         </p>
 
         {/* ================= VIDEO PLACEHOLDER START ================= */}
-        <div className="mx-auto max-w-3xl mb-12 relative group cursor-pointer">
+        <div 
+            onClick={trackVideoClick} // <--- TRACKING ADDED (ViewContent)
+            className="mx-auto max-w-3xl mb-12 relative group cursor-pointer"
+        >
             {/* Glow Effect behind video */}
             <div className="absolute -inset-1 bg-gradient-to-r from-orange-400 to-amber-600 rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
             
@@ -59,11 +63,12 @@ const HeroSection = () => {
         {/* CTA Button Area */}
         <div className="flex flex-col items-center justify-center gap-4 sm:flex-row mb-12">
           
-          {/* UPDATED: Payment Link Added */}
+          {/* UPDATED: Payment Link Added + TRACKING */}
           <a 
             href="https://rzp.io/rzp/devsocs" 
             target="_blank" 
             rel="noopener noreferrer"
+            onClick={trackInitiateCheckout} // <--- TRACKING ADDED (InitiateCheckout)
             className="group relative inline-flex items-center justify-center rounded-xl bg-[#FF4500] px-8 py-4 text-lg font-bold text-white shadow-xl transition-all hover:bg-orange-600 hover:scale-105 hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-offset-2"
           >
             Download the Bundle - ₹499

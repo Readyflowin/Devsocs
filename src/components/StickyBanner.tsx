@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
+import { trackInitiateCheckout } from '../pixelEvents'; // <--- IMPORT ADDED
 
 const StickyBanner = () => {
   return (
@@ -31,11 +32,12 @@ const StickyBanner = () => {
           </div>
         </div>
 
-        {/* Right: CTA Button (Updated to Razorpay Link) */}
+        {/* Right: CTA Button (Updated to Razorpay Link + PIXEL TRACKING) */}
         <a 
             href="https://rzp.io/rzp/devsocs" 
             target="_blank" 
             rel="noopener noreferrer"
+            onClick={trackInitiateCheckout} // <--- TRACKING ADDED HERE
             className="group relative inline-flex items-center justify-center rounded-xl bg-[#FF4500] px-4 py-3 sm:px-6 sm:py-3 text-sm sm:text-base font-bold text-white shadow-lg transition-all hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-offset-2 animate-wobble flex-shrink-0"
         >
           <span className="hidden sm:inline mr-2">Buy Now</span>
