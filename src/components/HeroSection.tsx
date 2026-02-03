@@ -1,18 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ArrowDown, CheckCircle, Lock } from 'lucide-react';
-import { trackInitiateCheckout, trackVideoClick } from '../pixelEvents'; // <--- IMPORTS ADDED
+import { trackInitiateCheckout, trackVideoClick } from '../pixelEvents';
+
+// IMPORT YOUR THUMBNAIL HERE
+// Make sure the file exists at src/assets/images/thumbnail.png
+import videoThumbnail from '../assets/images/thumbnail.png'; 
 
 const HeroSection = () => {
+  // State to handle video playing
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const handleVideoClick = () => {
+    trackVideoClick(); // Fire pixel event
+    setIsPlaying(true); // Switch to iframe
+  };
+
   return (
-    // UPDATED: Changed pt-32 to pt-24 (Reduced gap for mobile)
     <div className="relative overflow-hidden bg-white pt-24 pb-16 lg:pt-40 lg:pb-24">
       
       {/* === BACKGROUND PATTERN START === */}
       <div className="absolute inset-0 z-0">
-          {/* 1. Base Grid Pattern */}
           <div className="absolute h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
-          
-          {/* 2. Radial Gradient for 3D Depth (Spotlight Effect) */}
           <div className="absolute left-0 right-0 top-0 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-[#FF4500] opacity-20 blur-[100px]"></div>
       </div>
       {/* === BACKGROUND PATTERN END === */}
@@ -38,43 +46,70 @@ const HeroSection = () => {
           Don't send 100 cold DMs to randoms. Download the verified list of Indian businesses active <b>right now</b> without a website + get the exact scripts to close them.
         </p>
 
-        {/* ================= VIDEO PLACEHOLDER START ================= */}
-        <div 
-            onClick={trackVideoClick} // <--- TRACKING ADDED (ViewContent)
-            className="mx-auto max-w-3xl mb-12 relative group cursor-pointer"
-        >
-            {/* Glow Effect behind video */}
-            <div className="absolute -inset-1 bg-gradient-to-r from-orange-400 to-amber-600 rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
-            
-            <div className="relative aspect-video rounded-xl bg-slate-900 shadow-2xl overflow-hidden border border-slate-800 flex items-center justify-center group-hover:scale-[1.01] transition-transform duration-300">
-                 
-                 {/* Placeholder Content */}
-                 <div className="text-center">
-                     <div className="mx-auto w-20 h-20 bg-orange-600/90 rounded-full flex items-center justify-center mb-4 pl-1 shadow-lg group-hover:scale-110 transition-transform backdrop-blur-sm border-2 border-white/20">
-                        <svg className="w-8 h-8 text-white fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                     </div>
-                     <p className="text-slate-400 font-medium tracking-wide">Watch: How I find these leads in 2 mins</p>
-                 </div>
+        {/* ================= VIDEO SECTION START ================= */}
+        <div className="mx-auto max-w-3xl mb-12 relative group">
+           
+           {/* If Playing: Show YouTube Iframe */}
+           {isPlaying ? (
+             <div className="aspect-video rounded-xl bg-black shadow-2xl overflow-hidden border border-slate-800">
+               <iframe 
+                 width="100%" 
+                 height="100%" 
+                 src="https://www.youtube.com/embed/xyW0v51tx_Q?autoplay=1&rel=0" 
+                 title="DevSocs Lead Finding Method" 
+                 frameBorder="0" 
+                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                 allowFullScreen
+               ></iframe>
+             </div>
+           ) : (
+             /* If Not Playing: Show Image Thumbnail + Play Button */
+             <div 
+                onClick={handleVideoClick}
+                className="cursor-pointer relative aspect-video rounded-xl shadow-2xl overflow-hidden border border-slate-200 group-hover:scale-[1.01] transition-transform duration-300"
+             >
+                {/* 1. The Image */}
+                <img 
+                    src={videoThumbnail} 
+                    alt="Watch how to get leads" 
+                    className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity"
+                />
 
-            </div>
+                {/* 2. Dark Overlay (to make play button pop) */}
+                <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors"></div>
+
+                {/* 3. The Play Button Centered */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-20 h-20 bg-orange-600/90 rounded-full flex items-center justify-center pl-1 shadow-lg backdrop-blur-sm border-2 border-white/20 group-hover:scale-110 transition-transform">
+                        <svg className="w-8 h-8 text-white fill-current" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z"/>
+                        </svg>
+                    </div>
+                </div>
+
+                {/* 4. Text Label Below Button */}
+                <div className="absolute bottom-6 left-0 right-0 text-center">
+                    <p className="text-white font-medium tracking-wide drop-shadow-md bg-black/40 inline-block px-3 py-1 rounded-full text-sm">
+                        Watch what you are getting. 
+                    </p>
+                </div>
+             </div>
+           )}
         </div>
-        {/* ================= VIDEO PLACEHOLDER END ================= */}
+        {/* ================= VIDEO SECTION END ================= */}
 
         {/* CTA Button Area */}
         <div className="flex flex-col items-center justify-center gap-4 sm:flex-row mb-12">
           
-          {/* UPDATED: Payment Link Added + TRACKING */}
           <a 
             href="https://rzp.io/rzp/devsocs" 
             target="_blank" 
             rel="noopener noreferrer"
-            onClick={trackInitiateCheckout} // <--- TRACKING ADDED (InitiateCheckout)
+            onClick={trackInitiateCheckout}
             className="group relative inline-flex items-center justify-center rounded-xl bg-[#FF4500] px-8 py-4 text-lg font-bold text-white shadow-xl transition-all hover:bg-orange-600 hover:scale-105 hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-offset-2"
           >
             Download the Bundle - ₹499
             <ArrowDown className="ml-2 h-5 w-5 animate-bounce" />
-            
-            {/* Shiny effect on button */}
             <div className="absolute inset-0 rounded-xl ring-2 ring-white/20 group-hover:ring-white/40"></div>
           </a>
           
@@ -88,7 +123,6 @@ const HeroSection = () => {
             <p className="text-sm font-semibold text-slate-400 mb-4 uppercase tracking-wider">
                 Get Clients For Any Tech Stack
             </p>
-            
             <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12 transition-all duration-500">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/9/98/WordPress_blue_logo.svg" alt="WordPress" className="h-9 md:h-11 w-auto drop-shadow-sm hover:scale-110 transition-transform" />
                 <img src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Shopify_logo_2018.svg" alt="Shopify" className="h-8 md:h-10 w-auto drop-shadow-sm hover:scale-110 transition-transform" />

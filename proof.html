@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>BizzDash Dashboard</title>
-    
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    
+
     <style>
         :root {
             --bg-primary: #F9FAFB;
@@ -28,16 +28,19 @@
             --failed-bg: #FEE2E2;
             --failed-text: #991B1B;
         }
-        
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Inter', sans-serif; background-color: var(--bg-primary); overflow-x: hidden; }
         .sidebar { position: fixed; left: 0; top: 0; width: 240px; height: 100vh; background-color: var(--sidebar-bg); padding: 24px 0; z-index: 100; transition: all 0.3s ease; }
-        .sidebar-logo { padding: 0 20px 32px; font-size: 24px; font-weight: 700; color: white; letter-spacing: -0.5px; }
-        .sidebar-nav { list-style: none; }
-        .sidebar-nav-item { padding: 12px 20px; margin: 2px 12px; border-radius: 8px; cursor: pointer; transition: all 0.2s ease; display: flex; align-items: center; gap: 12px; color: rgba(255,255,255,0.7); font-size: 14px; font-weight: 500; }
-        .sidebar-nav-item:hover { background-color: rgba(255,255,255,0.08); color: white; }
-        .sidebar-nav-item.active { background-color: rgba(51,149,255,0.15); color: var(--accent-blue); }
-        .sidebar-icon { width: 20px; height: 20px; stroke-width: 2; }
+        .sidebar-logo { padding: 0 20px 22px; font-size: 24px; font-weight: 700; color: white; letter-spacing: -0.5px; }
+        .sidebar-nav { list-style: none; margin-top: 8px; padding: 0 8px; }
+        .sidebar-nav-item { padding: 12px 14px; margin: 6px 6px; border-radius: 8px; cursor: pointer; transition: all 0.18s ease; display: flex; align-items: center; gap: 12px; color: rgba(255,255,255,0.85); font-size: 14px; font-weight: 600; text-decoration: none; }
+        .sidebar-nav-item:hover { background-color: rgba(255,255,255,0.06); color: white; transform: translateX(2px); }
+        .sidebar-nav-item.active { background-color: rgba(51,149,255,0.14); color: var(--accent-blue); box-shadow: 0 6px 18px rgba(51,149,255,0.06) inset; }
+        .sidebar-icon { width: 18px; height: 18px; flex-shrink: 0; display: inline-block; color: rgba(255,255,255,0.9); }
+        .sidebar-item-label { display: inline-block; }
+        .nav-badge { margin-left:auto; background: rgba(255,255,255,0.08); color: #fff; padding: 2px 8px; border-radius: 999px; font-size: 12px; font-weight:700; }
+
         .main-content { margin-left: 240px; min-height: 100vh; }
         .header { background: white; border-bottom: 1px solid #E5E7EB; padding: 16px 32px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 50; }
         .business-view { display: flex; align-items: center; gap: 8px; font-size: 14px; color: #6B7280; }
@@ -96,12 +99,21 @@
         .expanded-content .meta { font-size: 14px; color: #374151; }
         .expanded-content .meta b { color: #111827; }
 
+        /* Quick actions (blue) */
+        .quick-actions { position: relative; display: inline-block; margin-right: 8px; }
+        .quick-btn { background: var(--accent-blue); color: #fff; border: none; padding: 8px 12px; border-radius: 8px; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; }
+        .quick-menu { position: absolute; right: 0; top: calc(100% + 8px); min-width: 200px; background: #fff; border-radius: 8px; box-shadow: 0 8px 24px rgba(2,4,43,0.08); border: 1px solid #eef2ff; overflow: hidden; z-index: 200; }
+        .quick-menu a { display: block; padding: 10px 14px; color: #111827; text-decoration: none; font-weight: 600; font-size: 14px; border-bottom: 1px solid #f3f4f6; }
+        .quick-menu a:last-child { border-bottom: none; }
+        .quick-menu a:hover { background: #f8fafc; color: var(--accent-blue); }
+
         @media (max-width: 1024px) {
             .sidebar { width: 80px; }
             .sidebar-logo { font-size: 20px; text-align: center; }
-            .sidebar-nav-item span { display: none; }
+            .sidebar-item-label { display: none; }
             .main-content { margin-left: 80px; }
             .search-bar { display: none; }
+            .quick-actions { display: none; }
         }
         @media (max-width: 768px) { .metrics-grid { grid-template-columns: 1fr; } .content-area { padding: 20px; } .header { padding: 16px 20px; } }
     </style>
@@ -113,14 +125,100 @@
     </div>
 
     <!-- Sidebar -->
-    <aside class="sidebar">
+    <aside class="sidebar" role="navigation" aria-label="Main navigation">
         <div class="sidebar-logo">BizzDash</div>
-        <ul class="sidebar-nav">
-            <li class="sidebar-nav-item active"> ... </li>
-            <li class="sidebar-nav-item"> ... </li>
-            <li class="sidebar-nav-item"> ... </li>
-            <li class="sidebar-nav-item"> ... </li>
-            <li class="sidebar-nav-item"> ... </li>
+        <ul class="sidebar-nav" id="mainNav">
+            <!-- Dashboard -->
+            <li>
+                <a href="#" class="sidebar-nav-item active" data-route="dashboard" aria-current="page">
+                    <span class="sidebar-icon" aria-hidden="true">
+                        <!-- home icon -->
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9.5L12 3l9 6.5V21a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1V9.5z"/></svg>
+                    </span>
+                    <span class="sidebar-item-label">Dashboard</span>
+                </a>
+            </li>
+
+            <!-- Transactions -->
+            <li>
+                <a href="#" class="sidebar-nav-item" data-route="transactions">
+                    <span class="sidebar-icon" aria-hidden="true">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-width="2" stroke-linejoin="round" stroke-linecap="round" d="M12 8v4l3 3M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    </span>
+                    <span class="sidebar-item-label">Transactions</span>
+                    <span class="nav-badge" title="Pending">4</span>
+                </a>
+            </li>
+
+            <!-- Analytics -->
+            <li>
+                <a href="#" class="sidebar-nav-item" data-route="analytics">
+                    <span class="sidebar-icon" aria-hidden="true">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M3 3v18h18"/><path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M7 14V7m5 10V4m5 7v3"/></svg>
+                    </span>
+                    <span class="sidebar-item-label">Analytics</span>
+                </a>
+            </li>
+
+            <!-- Payouts -->
+            <li>
+                <a href="#" class="sidebar-nav-item" data-route="payouts">
+                    <span class="sidebar-icon" aria-hidden="true">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 8c-4 0-8 2-8 5v3h16v-3c0-3-4-5-8-5zM12 8V5m0 0L9 7m3-2 3 2"/></svg>
+                    </span>
+                    <span class="sidebar-item-label">Payouts</span>
+                </a>
+            </li>
+
+            <!-- Products / Services -->
+            <li>
+                <a href="#" class="sidebar-nav-item" data-route="products">
+                    <span class="sidebar-icon" aria-hidden="true">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M3 7l9-4 9 4v8l-9 4-9-4V7z"/></svg>
+                    </span>
+                    <span class="sidebar-item-label">Products</span>
+                </a>
+            </li>
+
+            <!-- Integrations -->
+            <li>
+                <a href="#" class="sidebar-nav-item" data-route="integrations">
+                    <span class="sidebar-icon" aria-hidden="true">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg>
+                    </span>
+                    <span class="sidebar-item-label">Integrations</span>
+                </a>
+            </li>
+
+            <!-- Customers -->
+            <li>
+                <a href="#" class="sidebar-nav-item" data-route="customers">
+                    <span class="sidebar-icon" aria-hidden="true">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M17 21v-2a4 4 0 00-4-4H7a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4" stroke-width="2"/></svg>
+                    </span>
+                    <span class="sidebar-item-label">Customers</span>
+                </a>
+            </li>
+
+            <!-- Settings -->
+            <li>
+                <a href="#" class="sidebar-nav-item" data-route="settings">
+                    <span class="sidebar-icon" aria-hidden="true">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 15.5A3.5 3.5 0 1112 8.5a3.5 3.5 0 010 7z"/><path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M19.4 15a1.6 1.6 0 00.36 1.72l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.6 1.6 0 00-1.72-.36 1.6 1.6 0 00-1 1.51V21a2 2 0 01-4 0v-.15a1.6 1.6 0 00-1-1.51 1.6 1.6 0 00-1.72.36l-.06.06A2 2 0 012.24 17.8l.06-.06A1.6 1.6 0 002.66 16a1.6 1.6 0 00-1.51-1H1a2 2 0 010-4h.15a1.6 1.6 0 001.51-1 1.6 1.6 0 00-.36-1.72l-.06-.06A2 2 0 015.2 2.24l.06.06A1.6 1.6 0 006.98 2.96 1.6 1.6 0 008.5 2H9a2 2 0 014 0h.15a1.6 1.6 0 001 .36 1.6 1.6 0 001.72-.36l.06-.06A2 2 0 0119.76 6.2l-.06.06A1.6 1.6 0 0120.34 8a1.6 1.6 0 001.51 1H22a2 2 0 010 4h-.15a1.6 1.6 0 00-1.51 1z"/></svg>
+                    </span>
+                    <span class="sidebar-item-label">Settings</span>
+                </a>
+            </li>
+
+            <!-- Help / Docs -->
+            <li>
+                <a href="#" class="sidebar-nav-item" data-route="help">
+                    <span class="sidebar-icon" aria-hidden="true">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M9.09 9a3 3 0 116 0c0 1.657-3 1.5-3 4"/><path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 17h.01"/></svg>
+                    </span>
+                    <span class="sidebar-item-label">Help & Docs</span>
+                </a>
+            </li>
         </ul>
     </aside>
 
@@ -133,32 +231,47 @@
                 <span class="business-name">Devsocs</span>
                 <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
             </div>
-            
+
             <div class="search-bar">
                 <input id="searchInput" type="text" class="search-input" placeholder="Search transactions, payments...">
             </div>
-            
-            <div class="profile-dropdown">
-                <div class="profile-avatar">AC</div>
-                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+
+            <div style="display:flex; align-items:center; gap:8px">
+                <!-- Quick actions (blue) -->
+                <div class="quick-actions" id="quickActions">
+                    <button id="quickBtn" class="quick-btn" aria-expanded="false" aria-controls="quickMenu">
+                        Quick
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="color: rgba(255,255,255,0.9)"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div id="quickMenu" class="quick-menu" hidden role="menu" aria-hidden="true">
+                        <a href="#" id="allTime">All-time earnings</a>
+                        <a href="#" id="payouts">Payouts</a>
+                        <a href="#" id="settings">Settings</a>
+                    </div>
+                </div>
+
+                <div class="profile-dropdown">
+                    <div class="profile-avatar">AC</div>
+                    <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </div>
             </div>
         </header>
 
         <!-- Content Area -->
         <div class="content-area">
             <h1 class="page-title">Dashboard Overview</h1>
-            
+
             <!-- Metrics Grid -->
             <div class="metrics-grid">
                 <div class="metric-card">
                     <div class="metric-label">Total Earnings</div>
-                    <div class="metric-value" id="totalEarnings">₹3,26,711</div>
+                    <div class="metric-value" id="totalEarnings">₹70,850</div>
                     <div class="metric-change positive">
                         <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
                         <span id="earningsChange">+12.5% from last month</span>
                     </div>
                 </div>
-                
+
                 <div class="metric-card">
                     <div class="metric-label">Current Balance</div>
                     <div class="metric-value" id="currentBalance">₹59,433</div>
@@ -167,7 +280,7 @@
                         <span>+8.2% from last month</span>
                     </div>
                 </div>
-                
+
                 <div class="metric-card">
                     <div class="metric-label">Pending Settlements</div>
                     <div class="metric-value" id="pendingSettlements">₹14,867</div>
@@ -175,13 +288,13 @@
                         <span>Processing <span id="processingCount">4</span> payments</span>
                     </div>
                 </div>
-                
+
                 <div class="metric-card">
                     <div class="metric-label">Refunds</div>
                     <div class="metric-value" id="refundsTotal">₹3,450</div>
                     <div class="metric-change negative">
                         <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"></path></svg>
-                        <span>4 transactions this month</span>
+                        <span>4% Hike in returns</span>
                     </div>
                 </div>
             </div>
@@ -230,7 +343,7 @@
 
         // Initial totals (these drive the chart data generation so the chart "matches" the dashboard numbers)
         const totals = {
-            totalEarnings: 326711,
+            totalEarnings: 70850,      // <- updated to ₹70,850 (you asked this to be the total)
             currentBalance: 59433,
             pendingSettlements: 14867,
             refundsTotal: 3450
@@ -271,7 +384,7 @@
             },
             {
                 date: 'Jan 12, 2026', id: 'TXN_6X7Y8Z9A1B', method: 'Card', amount: 8000, status: 'success', details: {
-                    payer: 'Karma Coffee Co', service: 'E‑commerce front-end', invoice: 'INV-2026-054', reference: 'Card **** 6677', fees: 160, net: 7840, notes: 'Small refund processed later.'
+                    payer: 'Karma Coffee Co', service: 'E-commerce front-end', invoice: 'INV-2026-054', reference: 'Card **** 6677', fees: 160, net: 7840, notes: 'Small refund processed later.'
                 }
             },
             {
@@ -516,6 +629,53 @@
             revenueChart.data.labels = chartDataObj.labels; revenueChart.data.datasets[0].data = chartDataObj.data; revenueChart.update();
         }
         window.addTransaction = addTransaction;
+
+        // Quick actions toggle logic
+        (function() {
+            const quickBtn = document.getElementById('quickBtn');
+            const quickMenu = document.getElementById('quickMenu');
+            const quickActions = document.getElementById('quickActions');
+
+            function openMenu() {
+                quickMenu.hidden = false;
+                quickMenu.setAttribute('aria-hidden', 'false');
+                quickBtn.setAttribute('aria-expanded', 'true');
+            }
+            function closeMenu() {
+                quickMenu.hidden = true;
+                quickMenu.setAttribute('aria-hidden', 'true');
+                quickBtn.setAttribute('aria-expanded', 'false');
+            }
+
+            quickBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (quickMenu.hidden) openMenu(); else closeMenu();
+            });
+
+            // close on outside click
+            document.addEventListener('click', (e) => {
+                if (!quickActions.contains(e.target)) closeMenu();
+            });
+
+            // example small handlers — you can replace with real navigation
+            document.getElementById('allTime').addEventListener('click', (e) => { e.preventDefault(); closeMenu(); alert('All-time earnings panel — implement view here.'); });
+            document.getElementById('payouts').addEventListener('click', (e) => { e.preventDefault(); closeMenu(); alert('Payouts page — implement action.'); });
+            document.getElementById('settings').addEventListener('click', (e) => { e.preventDefault(); closeMenu(); alert('Settings — implement navigation.'); });
+        })();
+
+        // Basic sidebar routing simulation (adds active class)
+        (function() {
+            const nav = document.getElementById('mainNav');
+            nav.addEventListener('click', (e) => {
+                const item = e.target.closest('.sidebar-nav-item');
+                if (!item) return;
+                document.querySelectorAll('.sidebar-nav-item').forEach(i => i.classList.remove('active'));
+                item.classList.add('active');
+                // simple demo feedback:
+                const route = item.dataset.route || 'dashboard';
+                console.log('Navigate →', route);
+            });
+        })();
 
         // Remove loader
         window.addEventListener('load', function () {
