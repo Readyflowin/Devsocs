@@ -1,8 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
-    <footer className="bg-slate-900 border-t border-slate-800 py-12 text-center sm:text-left">
+    // UPDATED: Added 'pb-32' to prevent the Sticky Banner from covering the link
+    <footer className="bg-slate-900 border-t border-slate-800 pt-12 pb-32 text-center sm:text-left">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
         <div className="flex flex-col md:flex-row justify-between items-center gap-8">
@@ -15,9 +17,22 @@ const Footer = () => {
             <p className="text-slate-400 text-sm max-w-xs mx-auto md:mx-0 leading-relaxed">
                Empowering developers with verified data and tools to close high-ticket clients.
             </p>
-            <p className="text-slate-600 text-xs mt-6 font-medium">
-               © 2026 DevSocs. All rights reserved.
-            </p>
+            
+            <div className="mt-6 flex flex-col md:items-start items-center gap-2">
+                <p className="text-slate-600 text-xs font-medium">
+                   © 2026 DevSocs. All rights reserved.
+                </p>
+                
+                {/* === REFUND LINK (Bold, Visible & Clickable) === */}
+                <Link 
+                    to="/refund-policy" 
+                    className="text-slate-400 hover:text-white font-bold text-sm underline decoration-orange-500 decoration-2 underline-offset-4 transition-all mt-1"
+                >
+                    Refund Policy
+                </Link>
+                {/* =========================================== */}
+                
+            </div>
           </div>
 
           {/* Social Links (Official Icons) */}
