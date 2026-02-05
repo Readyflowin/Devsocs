@@ -1,7 +1,7 @@
 import React from 'react';
-import { AlertTriangle, ArrowRight, Lock, Shield } from 'lucide-react';
+import { AlertTriangle, ArrowRight, Lock } from 'lucide-react';
 // IMPORT TRACKING EVENT
-import { trackInitiateCheckout } from '../pixelEvents'; // <--- IMPORT ADDED
+import { trackInitiateCheckout } from '../pixelEvents';
 
 // === IMPORT YOUR 3D BONUS IMAGES ===
 import bonus1 from '../assets/images/bonus1.png'; // Excel/Database
@@ -18,7 +18,7 @@ const BonusSection = () => {
         <div className="text-center mb-20">
             <span className="text-[#FF4500] font-bold tracking-wider uppercase text-sm">Total Value: ₹15,000+</span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-2 mb-12">
-               What's Inside The Bundle?
+                What's Inside The Bundle?
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
@@ -105,7 +105,7 @@ const BonusSection = () => {
             href="https://rzp.io/rzp/devsocs" 
             target="_blank" 
             rel="noopener noreferrer"
-            onClick={trackInitiateCheckout} // <--- TRACKING ADDED HERE
+            onClick={trackInitiateCheckout}
             className="w-full sm:w-auto inline-flex items-center justify-center rounded-xl bg-[#FF4500] px-8 py-4 text-lg font-bold text-white shadow-xl transition-all hover:bg-orange-600 hover:scale-105 hover:shadow-orange-500/30"
           >
             Get Instant Access - ₹499
@@ -152,20 +152,7 @@ const BonusSection = () => {
             </div>
         </div>
 
-        {/* Footer & Disclaimer */}
-        <div className="border-t border-slate-200 pt-12 text-center sm:text-left">
-            <div className="flex flex-col sm:flex-row justify-between items-start gap-8">
-                <div>
-                    <h4 className="font-bold text-xl mb-2 text-slate-900">DevSocs</h4>
-                    <p className="text-slate-500 text-sm max-w-xs">Helping developers and freelancers find high-ticket clients without the grind.</p>
-                </div>
-                <div className="text-xs text-slate-400 max-w-lg text-justify leading-relaxed">
-                    <p className="font-bold text-slate-600 mb-1 flex items-center gap-1"><Shield className="w-3 h-3" /> Data Policy & Disclaimer:</p>
-                    All information contained in this database is Public Business Information collected manually from the Meta Ad Library and public business profiles where entities were actively advertising. This is a B2B Research Database. It does NOT contain private personal information, home addresses, or sensitive financial data. We aggregate publicly available business contact details to help developers connect with businesses requiring technical services.
-                </div>
-            </div>
-            <div className="mt-12 text-center text-slate-400 text-xs">© 2026 DevSocs. All rights reserved.</div>
-        </div>
+        {/* --- REMOVED FOOTER/LEGAL SECTION --- */}
 
       </div>
     </div>

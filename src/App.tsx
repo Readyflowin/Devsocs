@@ -7,11 +7,12 @@ import PainProblem from './components/PainProblem';
 import TrustWall from './components/TrustWall';
 import EarningsSection from './components/EarningsSection';
 import BonusSection from './components/BonusSection';
+import LegalSection from './components/LegalSection'; // <--- IMPORT ADDED
 import Reviews from './components/Reviews';
 import Footer from './components/Footer';
 import StickyBanner from './components/StickyBanner';
 import ThankYou from './components/ThankYou';
-import RefundPolicy from './components/RefundPolicy'; // <--- IMPORT ADDED
+import RefundPolicy from './components/RefundPolicy';
 
 const LandingPage = () => {
   return (
@@ -22,7 +23,12 @@ const LandingPage = () => {
       <PainProblem />
       <TrustWall />
       <BonusSection />
+      
+      {/* Legal Section placed immediately below Bonus as requested */}
+      
+
       <Reviews />
+      <LegalSection /> 
       <Footer />
       <StickyBanner />
     </div>
@@ -38,7 +44,7 @@ function App() {
       {/* Route 2: SECRET SUCCESS PAGE */}
       <Route path="/order-confirmed-x9z2q1-secure-access-77" element={<ThankYou />} />
 
-      {/* Route 3: REFUND POLICY PAGE (Added) */}
+      {/* Route 3: REFUND POLICY PAGE */}
       <Route path="/refund-policy" element={<RefundPolicy />} />
 
       {/* Optional: Redirect old thank-you to home */}
