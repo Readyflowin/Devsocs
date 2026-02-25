@@ -51,7 +51,7 @@ const ThankYou = () => {
              
              {/* GOOGLE DRIVE LINK */}
              <a 
-               href="https://drive.google.com/drive/folders/1Vfe0a0lkKnMG-EPjvjtEMLvh4YlzSonE?usp=sharing" 
+               href="https://drive.google.com/drive/folders/18fY03EGcUViOU8idb25JQGOl_3zRAqHD?usp=sharing" 
                target="_blank" 
                rel="noopener noreferrer"
                className="group w-full flex items-center justify-center gap-3 bg-[#FF4500] text-white font-bold py-4 px-6 rounded-xl shadow-lg shadow-orange-200 hover:bg-orange-600 hover:scale-[1.02] transition-all duration-300"

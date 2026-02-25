@@ -31,43 +31,43 @@ const HeroSection = () => {
         <div className="inline-flex items-center rounded-full border border-orange-100 bg-orange-50 px-3 py-1 mb-6 shadow-sm">
           <span className="flex h-2 w-2 rounded-full bg-orange-600 mr-2 animate-pulse"></span>
           <span className="text-xs font-semibold text-orange-700 uppercase tracking-wide">
-            Verified Leads • Updated Jan 2026
+            New Protocol • Updated Feb 2026
           </span>
         </div>
 
         {/* Headline */}
         <h1 className="mx-auto max-w-4xl text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl md:text-6xl mb-6">
-          Stop Pitching Broke Clients. <br className="hidden sm:block" />
-          Get <span className="text-[#FF4500] underline decoration-4 decoration-orange-200 underline-offset-4">250+ Leads</span> Who Are Burning Money On Ads.
+          Stop Begging for Work. <br className="hidden sm:block" />
+          Get Your Next High-Paying Client in the <span className="text-[#FF4500] underline decoration-4 decoration-orange-200 underline-offset-4">Next 24 Hours.</span>
         </h1>
 
         {/* Subheadline */}
         <p className="mx-auto max-w-2xl text-lg text-slate-600 mb-8 leading-relaxed">
-          Don't send 100 cold DMs to randoms. Download the verified list of Indian businesses active <b>right now</b> without a website + get the exact scripts to close them.
+          Most freelancers fail because they don't have data. Stop guessing. <b>Steal</b> my exact <b>15-Minute Hunting Protocol</b> AND get <b>250 Verified Leads</b> handed to you as <b>STARTER BONUS</b>.
         </p>
 
         {/* ================= VIDEO SECTION START ================= */}
         <div className="mx-auto max-w-3xl mb-12 relative group">
-           
-           {/* If Playing: Show YouTube Iframe */}
-           {isPlaying ? (
-             <div className="aspect-video rounded-xl bg-black shadow-2xl overflow-hidden border border-slate-800">
-               <iframe 
-                 width="100%" 
-                 height="100%" 
-                 src="https://www.youtube.com/embed/xyW0v51tx_Q?autoplay=1&rel=0" 
-                 title="DevSocs Lead Finding Method" 
-                 frameBorder="0" 
-                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                 allowFullScreen
-               ></iframe>
-             </div>
-           ) : (
-             /* If Not Playing: Show Image Thumbnail + Play Button */
-             <div 
+            
+            {/* If Playing: Show YouTube Iframe */}
+            {isPlaying ? (
+              <div className="aspect-video rounded-xl bg-black shadow-2xl overflow-hidden border border-slate-800">
+                <iframe 
+                  width="100%" 
+                  height="100%" 
+                  src="https://www.youtube.com/embed/one8mjK9zBc?autoplay=1&rel=0" 
+                  title="DevSocs Lead Finding Method" 
+                  frameBorder="0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                  allowFullScreen
+                ></iframe>
+              </div>
+            ) : (
+              /* If Not Playing: Show Image Thumbnail + Play Button */
+              <div 
                 onClick={handleVideoClick}
                 className="cursor-pointer relative aspect-video rounded-xl shadow-2xl overflow-hidden border border-slate-200 group-hover:scale-[1.01] transition-transform duration-300"
-             >
+              >
                 {/* 1. The Image */}
                 <img 
                     src={videoThumbnail} 
@@ -90,11 +90,11 @@ const HeroSection = () => {
                 {/* 4. Text Label Below Button */}
                 <div className="absolute bottom-6 left-0 right-0 text-center">
                     <p className="text-white font-medium tracking-wide drop-shadow-md bg-black/40 inline-block px-3 py-1 rounded-full text-sm">
-                        Watch what you are getting. 
+                        Watch how it works (only 2 Mins) 
                     </p>
                 </div>
-             </div>
-           )}
+              </div>
+            )}
         </div>
         {/* ================= VIDEO SECTION END ================= */}
 
@@ -108,8 +108,7 @@ const HeroSection = () => {
             onClick={trackInitiateCheckout}
             className="group relative inline-flex items-center justify-center rounded-xl bg-[#FF4500] px-8 py-4 text-lg font-bold text-white shadow-xl transition-all hover:bg-orange-600 hover:scale-105 hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-offset-2"
           >
-            Download the Bundle - ₹499
-            <ArrowDown className="ml-2 h-5 w-5 animate-bounce" />
+          I WANT TO LEARN THE PROTOCOL
             <div className="absolute inset-0 rounded-xl ring-2 ring-white/20 group-hover:ring-white/40"></div>
           </a>
           
@@ -121,7 +120,7 @@ const HeroSection = () => {
         {/* THE STACK VISUAL */}
         <div className="mx-auto max-w-5xl">
             <p className="text-sm font-semibold text-slate-400 mb-4 uppercase tracking-wider">
-                Get Clients For Any Tech Stack
+                Works for finding clients in
             </p>
             <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12 transition-all duration-500">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/9/98/WordPress_blue_logo.svg" alt="WordPress" className="h-9 md:h-11 w-auto drop-shadow-sm hover:scale-110 transition-transform" />
@@ -136,9 +135,9 @@ const HeroSection = () => {
       {/* Trust Ticker */}
       <div className="mt-16 border-y border-slate-100 bg-slate-50/80 backdrop-blur-sm py-3 overflow-hidden relative z-10">
         <div className="flex items-center justify-center gap-8 text-sm font-medium text-slate-500 sm:gap-16">
-            <span className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-orange-500"/> Instant Download</span>
-            <span className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-orange-500"/> 250+ Verified Numbers</span>
-            <span className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-orange-500"/> Lifetime Access</span>
+            <span className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-orange-500"/> No Theory, Just Action</span>
+            <span className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-orange-500"/> Copy-Paste Scripts Included</span>
+            <span className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-orange-500"/> 100% Verified Data</span>
         </div>
       </div>
     </div>

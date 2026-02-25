@@ -16,61 +16,61 @@ const BonusSection = () => {
         
         {/* ================= NEW SECTION: WHAT'S INSIDE (3D BONUSES) ================= */}
         <div className="text-center mb-20">
-            <span className="text-[#FF4500] font-bold tracking-wider uppercase text-sm">Total Value: ₹15,000+</span>
+            <span className="text-[#FF4500] font-bold tracking-wider uppercase text-sm">Total Value: ₹5,000+</span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-2 mb-12">
-                What's Inside The Bundle?
+                What's Included in the ₹499 Bundle?
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
                 
-                {/* Bonus 1: The Database */}
+                {/* Bonus 1: The Protocol Video */}
                 <div className="group relative bg-slate-50 hover:bg-white p-8 rounded-3xl border border-slate-100 hover:border-orange-100/50 shadow-sm hover:shadow-2xl hover:shadow-orange-100/30 transition-all duration-500">
                     <div className="relative h-56 mb-6 flex items-center justify-center">
                         <div className="absolute inset-0 bg-orange-500/10 blur-[40px] rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
                         <img 
-                            src={bonus1} 
-                            alt="Verified Lead Database" 
-                            className="relative h-full w-auto object-contain drop-shadow-xl transform transition-transform duration-500 ease-in-out group-hover:-translate-y-3 group-hover:scale-105"
-                        />
-                    </div>
-                    <h3 className="text-xl font-bold text-slate-900 mb-3">1. The Verified Lead Database</h3>
-                    <p className="text-slate-600 text-sm leading-relaxed">
-                        Excel sheet with 250+ active businesses burning money on ads but no website. Includes direct Instagram IDs.
-                        <span className="block mt-2 font-bold text-orange-600">Value: ₹10,000</span>
-                    </p>
-                </div>
-
-                {/* Bonus 2: The Playbook */}
-                <div className="group relative bg-slate-50 hover:bg-white p-8 rounded-3xl border border-slate-100 hover:border-orange-100/50 shadow-sm hover:shadow-2xl hover:shadow-orange-100/30 transition-all duration-500">
-                    <div className="relative h-56 mb-6 flex items-center justify-center">
-                        <div className="absolute inset-0 bg-blue-500/10 blur-[40px] rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
-                        <img 
                             src={bonus2} 
-                            alt="Cold DM Playbook" 
+                            alt="The 15-Minute Protocol" 
                             className="relative h-full w-auto object-contain drop-shadow-xl transform transition-transform duration-500 ease-in-out group-hover:-translate-y-3 group-hover:scale-105"
                         />
                     </div>
-                    <h3 className="text-xl font-bold text-slate-900 mb-3">2. "Copy-Paste" DM Scripts</h3>
+                    <h3 className="text-xl font-bold text-slate-900 mb-3">1. The 15-Min Client Protocol</h3>
                     <p className="text-slate-600 text-sm leading-relaxed">
-                        Exact outreach scripts tested to get replies. Stop overthinking what to say. Just copy, send, close.
+                        My internal SOP video. Watch me find, qualify, and contact a high-ticket client in real-time. 
                         <span className="block mt-2 font-bold text-orange-600">Value: ₹2,500</span>
                     </p>
                 </div>
 
-                {/* Bonus 3: Tech Stack */}
+                {/* Bonus 2: The 250 leads */}
+                <div className="group relative bg-slate-50 hover:bg-white p-8 rounded-3xl border border-slate-100 hover:border-orange-100/50 shadow-sm hover:shadow-2xl hover:shadow-orange-100/30 transition-all duration-500">
+                    <div className="relative h-56 mb-6 flex items-center justify-center">
+                        <div className="absolute inset-0 bg-blue-500/10 blur-[40px] rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+                        <img 
+                            src={bonus1} 
+                            alt="250 Verified Leads" 
+                            className="relative h-full w-auto object-contain drop-shadow-xl transform transition-transform duration-500 ease-in-out group-hover:-translate-y-3 group-hover:scale-105"
+                        />
+                    </div>
+                    <h3 className="text-xl font-bold text-slate-900 mb-3">2. 250 Verified "Ready-to-Close" Leads</h3>
+                    <p className="text-slate-600 text-sm leading-relaxed">
+                        Don't start from zero. Get 250 Verified businesses Instagram Handles that need a website <b>today</b>.
+                        <span className="block mt-2 font-bold text-orange-600">Value: ₹2,000</span>
+                    </p>
+                </div>
+
+                {/* Bonus 3: Scripts & Assets */}
                 <div className="group relative bg-slate-50 hover:bg-white p-8 rounded-3xl border border-slate-100 hover:border-orange-100/50 shadow-sm hover:shadow-2xl hover:shadow-orange-100/30 transition-all duration-500">
                     <div className="relative h-56 mb-6 flex items-center justify-center">
                         <div className="absolute inset-0 bg-green-500/10 blur-[40px] rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
                         <img 
                             src={bonus3} 
-                            alt="Liquid Code Vault" 
+                            alt="Scripts & Code" 
                             className="relative h-full w-auto object-contain drop-shadow-xl transform transition-transform duration-500 ease-in-out group-hover:-translate-y-3 group-hover:scale-105"
                         />
                     </div>
-                    <h3 className="text-xl font-bold text-slate-900 mb-3">3. Bonus Code Snippets</h3>
+                    <h3 className="text-xl font-bold text-slate-900 mb-3">3. Copy-Paste Scripts</h3>
                     <p className="text-slate-600 text-sm leading-relaxed">
-                        Ready-to-use Liquid code for Shopify sections to speed up your delivery time.
-                        <span className="block mt-2 font-bold text-orange-600">Value: ₹2,500</span>
+                        Exact DM & WhatsApp scripts tested to get replies. Plus bonus Shopify code snippets to speed up your work.
+                        <span className="block mt-2 font-bold text-orange-600">Value: ₹1,500</span>
                     </p>
                 </div>
 
@@ -80,24 +80,24 @@ const BonusSection = () => {
         {/* Urgency Box */}
         <div id="pricing-card" className="bg-white border-2 border-orange-100 rounded-3xl p-8 text-center mb-16 shadow-2xl shadow-orange-100/50 scroll-mt-32 max-w-3xl mx-auto">
           <div className="inline-flex items-center gap-2 bg-orange-50 text-orange-600 font-bold uppercase tracking-widest text-sm px-3 py-1 rounded-full mb-4">
-            <AlertTriangle className="w-4 h-4" /> Batch #1 Closing Soon
+            <AlertTriangle className="w-4 h-4" /> Limited Availability
           </div>
           <h2 className="text-3xl font-bold text-slate-900 mb-4">
-            Secure Your Spot Before Price Increases
+            Get The Full System For Less Than A Pizza
           </h2>
           <p className="text-slate-600 mb-8 max-w-xl mx-auto">
-            To prevent saturation, we are limiting this list to 75 freelancers only. Once sold out, the price will jump to <span className="font-bold text-slate-900">₹2,499</span>.
+             You only need ONE client from the 250 leads to make your money back <b>40x over</b>.
           </p>
           
           {/* Progress Bar */}
           <div className="w-full bg-slate-100 rounded-full h-4 mb-2 overflow-hidden border border-slate-200">
-            <div className="bg-[#FF4500] h-full rounded-full w-[35%] animate-pulse relative overflow-hidden">
+            <div className="bg-[#FF4500] h-full rounded-full w-[65%] animate-pulse relative overflow-hidden">
                 <div className="absolute inset-0 bg-white/20" style={{backgroundImage: 'linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent)', backgroundSize: '1rem 1rem'}}></div>
             </div>
           </div>
           <div className="flex justify-between text-xs font-bold text-slate-500 mb-8 uppercase tracking-wide">
-            <span>24 Sold</span>
-            <span>75 Total Spots</span>
+            <span>Slots Filling Fast</span>
+            <span>Current Batch Closing Soon</span>
           </div>
 
           {/* FINAL CTA BUTTON - UPDATED WITH TRACKING */}
@@ -114,7 +114,7 @@ const BonusSection = () => {
           
           <p className="mt-4 text-xs text-slate-400 font-medium">
             <Lock className="w-3 h-3 inline mr-1" />
-            One-time payment. Instant download via Email.
+            Secure Payment via UPI • Instant Access
           </p>
         </div>
 
@@ -124,35 +124,42 @@ const BonusSection = () => {
             <div className="space-y-4">
                 <details className="group bg-slate-50 rounded-xl p-5 border border-slate-200 cursor-pointer open:bg-white open:shadow-md transition-all duration-300">
                     <summary className="flex items-center justify-between font-bold text-slate-800 list-none">
-                        Is this data legal to use?
+                        Why are you giving the method + leads for just ₹499?
                         <span className="transition-transform duration-300 group-open:rotate-180"><ArrowRight className="w-4 h-4 rotate-90 text-slate-400" /></span>
                     </summary>
                     <p className="text-slate-600 mt-3 text-sm leading-relaxed">
-                        Yes. This is 100% Public Business Information aggregated from the Meta Ad Library and public Instagram business profiles. We do not sell private personal data. You are contacting businesses via their public contact numbers.
+                        Fair question. We want you to succeed. By giving you the <b>Method</b> (to fish forever) and <b>50 Leads</b> (to eat today), we ensure you get results. We make our money on the volume of people we help, not by overcharging a few.
                     </p>
                 </details>
                 <details className="group bg-slate-50 rounded-xl p-5 border border-slate-200 cursor-pointer open:bg-white open:shadow-md transition-all duration-300">
                     <summary className="flex items-center justify-between font-bold text-slate-800 list-none">
-                        I use WordPress/Framer, is this for me?
+                        Is this just a list of random numbers?
                         <span className="transition-transform duration-300 group-open:rotate-180"><ArrowRight className="w-4 h-4 rotate-90 text-slate-400" /></span>
                     </summary>
                     <p className="text-slate-600 mt-3 text-sm leading-relaxed">
-                        Absolutely. The leads are businesses that need a website. They don't care if you build it in WordPress, Shopify, or React. They just want results. The bonus Liquid codes are for Shopify, but the leads are universal.
+                        No. These are businesses currently running ads but missing a website. We verify them. You get the Business Name, Phone Number, and Instagram Handle.
                     </p>
                 </details>
                 <details className="group bg-slate-50 rounded-xl p-5 border border-slate-200 cursor-pointer open:bg-white open:shadow-md transition-all duration-300">
                     <summary className="flex items-center justify-between font-bold text-slate-800 list-none">
-                        How do I get the files?
+                        I am a total beginner, will this work?
                         <span className="transition-transform duration-300 group-open:rotate-180"><ArrowRight className="w-4 h-4 rotate-90 text-slate-400" /></span>
                     </summary>
                     <p className="text-slate-600 mt-3 text-sm leading-relaxed">
-                        Immediately after payment, you will receive an email with the download link for the Excel Sheet, the Script PDF, and the Code Library.
+                        Yes. The "15-Minute Protocol" video is designed for beginners. We show you exactly what to click, what to say, and how to close. No prior experience needed.
+                    </p>
+                </details>
+                <details className="group bg-slate-50 rounded-xl p-5 border border-slate-200 cursor-pointer open:bg-white open:shadow-md transition-all duration-300">
+                    <summary className="flex items-center justify-between font-bold text-slate-800 list-none">
+                        How do I access the files?
+                        <span className="transition-transform duration-300 group-open:rotate-180"><ArrowRight className="w-4 h-4 rotate-90 text-slate-400" /></span>
+                    </summary>
+                    <p className="text-slate-600 mt-3 text-sm leading-relaxed">
+                        Instantly. After payment, you will be redirected to the download page and also receive an email with the Google Drive link containing the Video, Lead Sheet, and Scripts.
                     </p>
                 </details>
             </div>
         </div>
-
-        {/* --- REMOVED FOOTER/LEGAL SECTION --- */}
 
       </div>
     </div>
