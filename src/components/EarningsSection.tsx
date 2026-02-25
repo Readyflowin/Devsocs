@@ -1,5 +1,7 @@
+// EarningsSection.tsx
 import React, { useEffect, useRef, useState } from 'react';
 import { TrendingUp } from 'lucide-react';
+import { trackInitiateCheckout } from '../pixelEvents'; // <- tracking import
 
 // === IMPORTS ===
 import proof1 from '../assets/images/proof1.png';
@@ -141,6 +143,7 @@ const EarningsSection = () => {
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Yes I want to be financially independent - DevSocs"
+          onClick={() => trackInitiateCheckout()} // <- pixel call added
           className={
             // Responsive sizing:
             // - mobile: almost full width, readable text, wrapped

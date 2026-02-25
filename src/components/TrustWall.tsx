@@ -1,3 +1,4 @@
+// TrustWall.tsx
 import React from 'react';
 import { ShieldCheck, PlayCircle, CheckCircle2 } from 'lucide-react';
 // IMPORT TRACKING (Important for this strategy)
@@ -58,12 +59,13 @@ const TrustWall = () => {
                 The Protocol
             </div>
             
-            {/* LINK TO PAYMENT PAGE */}
+            {/* LINK TO PAYMENT PAGE */} 
+            {/* keep this clickable hero as a tracked CTA so we capture intent from both hero and final CTA */}
             <a 
                 href="https://pages.razorpay.com/devsocs" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                onClick={trackInitiateCheckout}
+                onClick={() => trackInitiateCheckout()} // <- pixel call
                 className="block aspect-video bg-slate-900 rounded-xl mb-5 overflow-hidden relative shadow-lg group-hover:shadow-orange-200/50 transition-shadow cursor-pointer"
             >
                 {/* VIDEO SCREENSHOT */}
@@ -137,15 +139,15 @@ const TrustWall = () => {
             href="https://pages.razorpay.com/devsocs"
             target="_blank"
             rel="noopener noreferrer"
-            onClick={trackInitiateCheckout}
+            onClick={() => trackInitiateCheckout()} // <- pixel call added
             aria-label="Purchase 250 leads bundle and Instagram method"
             className={
               'cta-subtle-bounce w-11/12 max-w-xl sm:w-auto inline-flex items-center justify-center px-6 py-3 sm:px-8 sm:py-3 bg-[#FF4500] hover:bg-[#ff5722] text-white font-bold rounded-xl sm:rounded-full shadow-lg transition-transform focus:outline-none focus:ring-4 focus:ring-orange-200 text-sm sm:text-base text-center'
             }
           >
             <span className="block leading-tight">
-              <span className="block">YES — I WANT THE BUNDLE</span>
-
+              <span className="block">YES — I WANT THE 250-LEADS BUNDLE</span>
+              <span className="block">+ INSTAGRAM OUTREACH METHOD</span>
             </span>
           </a>
         </div>
