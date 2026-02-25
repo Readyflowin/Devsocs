@@ -38,7 +38,7 @@ const HeroSection = () => {
         {/* Headline */}
         <h1 className="mx-auto max-w-4xl text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl md:text-6xl mb-6">
           Stop Begging for Work. <br className="hidden sm:block" />
-          Get Your Next High-Paying Client in the <span className="text-[#FF4500] underline decoration-4 decoration-orange-200 underline-offset-4">Next 24 Hours.</span>
+          Learn how to Get Your Next High-Paying Client in the <span className="text-[#FF4500] underline decoration-4 decoration-orange-200 underline-offset-4">Next 24 Hours.</span>
         </h1>
 
         {/* Subheadline */}
